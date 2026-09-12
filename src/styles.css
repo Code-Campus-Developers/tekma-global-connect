@@ -19,6 +19,7 @@
  */
 
 @theme inline {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -59,28 +60,36 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-navy: var(--navy);
+  --color-petroleum: var(--petroleum);
+  --color-ocean: var(--ocean);
+  --color-energy: var(--energy);
+  --color-gold: var(--gold);
+  --color-magenta: var(--magenta);
+  --color-purple: var(--purple);
+  --color-surface: var(--surface);
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --radius: 0.375rem;
+  --background: oklch(0.985 0.006 240);
+  --foreground: oklch(0.22 0.025 245);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
+  --primary: oklch(0.30 0.085 240);
   --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
+  --secondary: oklch(0.93 0.025 225);
   --secondary-foreground: oklch(0.208 0.042 265.755);
   --muted: oklch(0.968 0.007 247.896);
   --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
+  --accent: oklch(0.68 0.15 215);
   --accent-foreground: oklch(0.208 0.042 265.755);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
+  --border: oklch(0.88 0.015 240);
+  --input: oklch(0.88 0.015 240);
   --ring: oklch(0.704 0.04 256.788);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
@@ -95,6 +104,14 @@
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
+  --navy: oklch(0.20 0.055 245);
+  --petroleum: oklch(0.38 0.10 235);
+  --ocean: oklch(0.55 0.12 220);
+  --energy: oklch(0.62 0.16 135);
+  --gold: oklch(0.82 0.17 85);
+  --magenta: oklch(0.50 0.22 350);
+  --purple: oklch(0.35 0.13 310);
+  --surface: oklch(0.96 0.012 235);
 }
 
 .dark {
@@ -140,5 +157,22 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    min-width: 320px;
   }
+
+  html { scroll-behavior: smooth; }
+  ::selection { background: var(--color-gold); color: var(--color-navy); }
+  a, button, input, select, textarea { outline-offset: 3px; }
+  :focus-visible { outline: 2px solid var(--color-ocean); }
+}
+
+@keyframes drift { 0%, 100% { transform: translate3d(0,0,0); } 50% { transform: translate3d(0,-8px,0); } }
+@keyframes dash { to { stroke-dashoffset: -80; } }
+
+@utility orbital-dash { stroke-dasharray: 7 12; animation: dash 14s linear infinite; }
+@utility gentle-drift { animation: drift 7s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
