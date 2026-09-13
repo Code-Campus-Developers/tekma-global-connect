@@ -10,33 +10,180 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AcreageAndAssetsRouteImport } from './routes/acreage-and-assets'
+import { Route as CommercialRealEstateRouteImport } from './routes/commercial-real-estate'
+import { Route as ConsultancyRouteImport } from './routes/consultancy'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as LeadershipRouteImport } from './routes/leadership'
+import { Route as MarineAndVesselsRouteImport } from './routes/marine-and-vessels'
+import { Route as OilAndGasRouteImport } from './routes/oil-and-gas'
+import { Route as OpportunitiesRouteImport } from './routes/opportunities'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as TermsRouteImport } from './routes/terms'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AcreageAndAssetsRoute = AcreageAndAssetsRouteImport.update({
+  id: '/acreage-and-assets',
+  path: '/acreage-and-assets',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommercialRealEstateRoute = CommercialRealEstateRouteImport.update({
+  id: '/commercial-real-estate',
+  path: '/commercial-real-estate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConsultancyRoute = ConsultancyRouteImport.update({
+  id: '/consultancy',
+  path: '/consultancy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LeadershipRoute = LeadershipRouteImport.update({
+  id: '/leadership',
+  path: '/leadership',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarineAndVesselsRoute = MarineAndVesselsRouteImport.update({
+  id: '/marine-and-vessels',
+  path: '/marine-and-vessels',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OilAndGasRoute = OilAndGasRouteImport.update({
+  id: '/oil-and-gas',
+  path: '/oil-and-gas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OpportunitiesRoute = OpportunitiesRouteImport.update({
+  id: '/opportunities',
+  path: '/opportunities',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/acreage-and-assets': typeof AcreageAndAssetsRoute
+  '/commercial-real-estate': typeof CommercialRealEstateRoute
+  '/consultancy': typeof ConsultancyRoute
+  '/contact': typeof ContactRoute
+  '/leadership': typeof LeadershipRoute
+  '/marine-and-vessels': typeof MarineAndVesselsRoute
+  '/oil-and-gas': typeof OilAndGasRoute
+  '/opportunities': typeof OpportunitiesRoute
+  '/privacy': typeof PrivacyRoute
+  '/terms': typeof TermsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/acreage-and-assets': typeof AcreageAndAssetsRoute
+  '/commercial-real-estate': typeof CommercialRealEstateRoute
+  '/consultancy': typeof ConsultancyRoute
+  '/contact': typeof ContactRoute
+  '/leadership': typeof LeadershipRoute
+  '/marine-and-vessels': typeof MarineAndVesselsRoute
+  '/oil-and-gas': typeof OilAndGasRoute
+  '/opportunities': typeof OpportunitiesRoute
+  '/privacy': typeof PrivacyRoute
+  '/terms': typeof TermsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/acreage-and-assets': typeof AcreageAndAssetsRoute
+  '/commercial-real-estate': typeof CommercialRealEstateRoute
+  '/consultancy': typeof ConsultancyRoute
+  '/contact': typeof ContactRoute
+  '/leadership': typeof LeadershipRoute
+  '/marine-and-vessels': typeof MarineAndVesselsRoute
+  '/oil-and-gas': typeof OilAndGasRoute
+  '/opportunities': typeof OpportunitiesRoute
+  '/privacy': typeof PrivacyRoute
+  '/terms': typeof TermsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/acreage-and-assets'
+    | '/commercial-real-estate'
+    | '/consultancy'
+    | '/contact'
+    | '/leadership'
+    | '/marine-and-vessels'
+    | '/oil-and-gas'
+    | '/opportunities'
+    | '/privacy'
+    | '/terms'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/acreage-and-assets'
+    | '/commercial-real-estate'
+    | '/consultancy'
+    | '/contact'
+    | '/leadership'
+    | '/marine-and-vessels'
+    | '/oil-and-gas'
+    | '/opportunities'
+    | '/privacy'
+    | '/terms'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/acreage-and-assets'
+    | '/commercial-real-estate'
+    | '/consultancy'
+    | '/contact'
+    | '/leadership'
+    | '/marine-and-vessels'
+    | '/oil-and-gas'
+    | '/opportunities'
+    | '/privacy'
+    | '/terms'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  AcreageAndAssetsRoute: typeof AcreageAndAssetsRoute
+  CommercialRealEstateRoute: typeof CommercialRealEstateRoute
+  ConsultancyRoute: typeof ConsultancyRoute
+  ContactRoute: typeof ContactRoute
+  LeadershipRoute: typeof LeadershipRoute
+  MarineAndVesselsRoute: typeof MarineAndVesselsRoute
+  OilAndGasRoute: typeof OilAndGasRoute
+  OpportunitiesRoute: typeof OpportunitiesRoute
+  PrivacyRoute: typeof PrivacyRoute
+  TermsRoute: typeof TermsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +195,99 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/acreage-and-assets': {
+      id: '/acreage-and-assets'
+      path: '/acreage-and-assets'
+      fullPath: '/acreage-and-assets'
+      preLoaderRoute: typeof AcreageAndAssetsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/commercial-real-estate': {
+      id: '/commercial-real-estate'
+      path: '/commercial-real-estate'
+      fullPath: '/commercial-real-estate'
+      preLoaderRoute: typeof CommercialRealEstateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/consultancy': {
+      id: '/consultancy'
+      path: '/consultancy'
+      fullPath: '/consultancy'
+      preLoaderRoute: typeof ConsultancyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/leadership': {
+      id: '/leadership'
+      path: '/leadership'
+      fullPath: '/leadership'
+      preLoaderRoute: typeof LeadershipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marine-and-vessels': {
+      id: '/marine-and-vessels'
+      path: '/marine-and-vessels'
+      fullPath: '/marine-and-vessels'
+      preLoaderRoute: typeof MarineAndVesselsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/oil-and-gas': {
+      id: '/oil-and-gas'
+      path: '/oil-and-gas'
+      fullPath: '/oil-and-gas'
+      preLoaderRoute: typeof OilAndGasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/opportunities': {
+      id: '/opportunities'
+      path: '/opportunities'
+      fullPath: '/opportunities'
+      preLoaderRoute: typeof OpportunitiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  AcreageAndAssetsRoute: AcreageAndAssetsRoute,
+  CommercialRealEstateRoute: CommercialRealEstateRoute,
+  ConsultancyRoute: ConsultancyRoute,
+  ContactRoute: ContactRoute,
+  LeadershipRoute: LeadershipRoute,
+  MarineAndVesselsRoute: MarineAndVesselsRoute,
+  OilAndGasRoute: OilAndGasRoute,
+  OpportunitiesRoute: OpportunitiesRoute,
+  PrivacyRoute: PrivacyRoute,
+  TermsRoute: TermsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
