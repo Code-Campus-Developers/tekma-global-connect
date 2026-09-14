@@ -13,7 +13,7 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
   return <header className="sticky top-0 z-50 border-b border-border/70 bg-background/95 backdrop-blur-xl">
     <div className="mx-auto grid h-20 max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-6 px-5 lg:px-8">
-      <Link to="/" aria-label="TEKMA Global Partners home" className="flex shrink-0 items-center gap-1"><span className="hidden whitespace-nowrap text-[10px] font-extrabold leading-none tracking-[0.04em] text-navy sm:inline sm:text-[11px]">TEKMA GLOBAL PARTNERS</span><img src={logo.url} alt="TEKMA Global Partners Limited" width={72} height={69} className="h-16 w-auto object-contain" /></Link>
+      <Link to="/" aria-label="TEKMA Global Partners home" className="flex shrink-0 items-center gap-1.5"><img src={logo.url} alt="TEKMA Global Partners Limited" width={72} height={69} className="h-16 w-auto object-contain" /><span className="hidden whitespace-nowrap text-xs font-extrabold leading-none tracking-[0.04em] text-navy sm:inline sm:text-sm">TEKMA GLOBAL PARTNERS</span></Link>
       <nav aria-label="Primary navigation" className="hidden items-center justify-center gap-7 lg:flex">
         <Link to="/" activeOptions={{exact:true}} className="text-sm font-semibold text-foreground/75 transition-colors hover:text-petroleum data-[status=active]:text-petroleum">Home</Link>
         <Link to="/about" className="text-sm font-semibold text-foreground/75 transition-colors hover:text-petroleum data-[status=active]:text-petroleum">About</Link>
