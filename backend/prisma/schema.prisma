@@ -1,0 +1,55 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum SubmissionType {
+  CONTACT
+  OPPORTUNITY
+}
+
+enum EmailStatus {
+  PENDING
+  SENT
+  FAILED
+}
+
+model Submission {
+  id                String         @id @default(uuid())
+  type              SubmissionType
+  name              String
+  company           String?
+  email             String
+  phone             String?
+  subject           String?
+  message           String?
+  jobTitle          String?
+  country           String?
+  representativeRole String?
+  opportunityType   String?
+  estimatedValue    String?
+  preferredContact  String?
+  emailStatus       EmailStatus    @default(PENDING)
+  emailError        String?
+  createdAt         DateTime       @default(now())
+  attachments       Attachment[]
+
+  @@index([type, createdAt])
+}
+
+model Attachment {
+  id           String     @id @default(uuid())
+  submissionId String
+  fileName     String
+  storagePath  String     @unique
+  mimeType     String
+  size         Int
+  createdAt    DateTime   @default(now())
+  submission   Submission @relation(fields: [submissionId], references: [id], onDelete: Cascade)
+
+  @@index([submissionId])
+}
