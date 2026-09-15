@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, LoaderCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -61,6 +61,9 @@ export function ContactForm() {
         disabled={status === "submitting"}
         className="min-h-12 rounded-none bg-navy px-8 hover:bg-petroleum sm:w-fit"
       >
+        {status === "submitting" && (
+          <LoaderCircle className="size-4 animate-spin" aria-hidden="true" />
+        )}
         {status === "submitting" ? "Sending…" : "Send Enquiry"}
       </Button>
     </form>
@@ -168,6 +171,9 @@ export function OpportunityForm() {
         disabled={status === "submitting"}
         className="min-h-12 rounded-none bg-navy px-8 uppercase tracking-[0.12em] hover:bg-petroleum sm:w-fit"
       >
+        {status === "submitting" && (
+          <LoaderCircle className="size-4 animate-spin" aria-hidden="true" />
+        )}
         {status === "submitting" ? "Sending…" : "Submit Opportunity"}
       </Button>
     </form>

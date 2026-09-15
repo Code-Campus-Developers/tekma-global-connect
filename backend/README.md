@@ -10,4 +10,4 @@ This Express API stores website enquiries in PostgreSQL, saves opportunity docum
 4. Start the service with `npm run dev`.
 5. Set the front-end `VITE_API_URL` to this API's public URL.
 
-The SMTP account must be authorised to send using `SMTP_FROM`. All website submissions are delivered to `COMPANY_EMAIL`.
+The Resend account must verify the domain used by `EMAIL_FROM`. All website submissions are delivered to `COMPANY_EMAIL`.

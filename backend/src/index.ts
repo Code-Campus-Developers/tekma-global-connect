@@ -5,7 +5,6 @@ import express, { type Request } from "express";
 import rateLimit from "express-rate-limit";
 import helmet from "helmet";
 import multer from "multer";
-import nodemailer from "nodemailer";
 import { PrismaClient, SubmissionType } from "@prisma/client";
 import { createClient } from "@supabase/supabase-js";
 import { z } from "zod";
@@ -13,12 +12,6 @@ import { allowedOrigins, env } from "./config.js";
 
 const prisma = new PrismaClient();
 const storage = createClient(env.SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY);
-const mailer = nodemailer.createTransport({
-  host: env.SMTP_HOST,
-  port: env.SMTP_PORT,
-  secure: env.SMTP_PORT === 465,
-  auth: { user: env.SMTP_USER, pass: env.SMTP_PASS },
-});
 const upload = multer({
   storage: multer.memoryStorage(),
   limits: { fileSize: 10 * 1024 * 1024, files: 1 },
@@ -72,7 +65,7 @@ app.use(rateLimit({ windowMs: 15 * 60 * 1000, limit: 10, standardHeaders: "draft
 
 app.get("/health", (_request, response) => response.json({ status: "ok" }));
 
-app.post("/api/submissions/contact", async (request, response, next) => {
+app.post("/api/submissions/contact", upload.none(), async (request, response, next) => {
   try {
     const values = contactSchema.parse(request.body);
     const submission = await prisma.submission.create({
@@ -157,14 +150,26 @@ async function sendCompanyEmail(
   attachment?: { filename: string; content: Buffer; contentType: string },
 ) {
   try {
-    await mailer.sendMail({
-      from: env.SMTP_FROM,
-      to: env.COMPANY_EMAIL,
-      replyTo,
-      subject: `[Website] ${subject}`,
-      text,
-      attachments: attachment ? [attachment] : undefined,
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${env.RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: env.EMAIL_FROM,
+        to: [env.COMPANY_EMAIL],
+        reply_to: replyTo,
+        subject: `[Website] ${subject}`,
+        text,
+        attachments: attachment
+          ? [{ filename: attachment.filename, content: attachment.content.toString("base64") }]
+          : undefined,
+      }),
     });
+    if (!response.ok) {
+      throw new Error(`Resend request failed with status ${response.status}`);
+    }
     await prisma.submission.update({ where: { id: submissionId }, data: { emailStatus: "SENT" } });
   } catch (error) {
     await prisma.submission.update({ where: { id: submissionId }, data: { emailStatus: "FAILED", emailError: error instanceof Error ? error.message.slice(0, 1000) : "Unknown email error" } });
