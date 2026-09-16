@@ -8,7 +8,7 @@ import multer from "multer";
 import { PrismaClient, SubmissionType } from "@prisma/client";
 import { createClient } from "@supabase/supabase-js";
 import { z } from "zod";
-import { allowedOrigins, env } from "./config.js";
+import { allowedOrigins, companyBccEmails, env } from "./config.js";
 
 const prisma = new PrismaClient();
 const storage = createClient(env.SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY);
@@ -201,6 +201,7 @@ async function sendCompanyEmail(
       body: JSON.stringify({
         from: env.EMAIL_FROM,
         to: [env.COMPANY_EMAIL],
+        bcc: companyBccEmails.length > 0 ? companyBccEmails : undefined,
         reply_to: replyTo,
         subject: `TEKMA Website | ${subject}`,
         text,
