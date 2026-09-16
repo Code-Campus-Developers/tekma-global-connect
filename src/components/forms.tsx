@@ -33,7 +33,9 @@ export function ContactForm() {
     }
   }
 
-  if (status === "sent") return <Success title="Enquiry sent" />;
+  if (status === "sent") {
+    return <Success title="Enquiry sent" onSendAnother={() => setStatus("idle")} />;
+  }
 
   return (
     <form onSubmit={submit} className="grid gap-5 sm:grid-cols-2">
@@ -91,7 +93,15 @@ export function OpportunityForm() {
     }
   }
 
-  if (status === "sent") return <Success title="Opportunity sent" />;
+  if (status === "sent") {
+    return (
+      <Success
+        title="Opportunity sent"
+        actionLabel="Submit another opportunity"
+        onSendAnother={() => setStatus("idle")}
+      />
+    );
+  }
 
   return (
     <form onSubmit={submit} className="grid gap-5 sm:grid-cols-2">
@@ -208,7 +218,15 @@ function FormError({ message }: { message: string }) {
   );
 }
 
-function Success({ title }: { title: string }) {
+function Success({
+  title,
+  actionLabel = "Send another enquiry",
+  onSendAnother,
+}: {
+  title: string;
+  actionLabel?: string;
+  onSendAnother?: () => void;
+}) {
   return (
     <div role="status" className="border-l-4 border-energy bg-surface p-8">
       <CheckCircle2 className="size-9 text-energy" />
@@ -216,6 +234,16 @@ function Success({ title }: { title: string }) {
       <p className="mt-2 leading-7 text-muted-foreground">
         Thank you. Your submission has been sent to TEKMA Global Partners Limited.
       </p>
+      {onSendAnother && (
+        <Button
+          type="button"
+          variant="outline"
+          onClick={onSendAnother}
+          className="mt-6 min-h-11 rounded-none border-navy text-navy hover:bg-navy hover:text-primary-foreground"
+        >
+          {actionLabel}
+        </Button>
+      )}
     </div>
   );
 }
