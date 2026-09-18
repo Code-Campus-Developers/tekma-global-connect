@@ -229,6 +229,17 @@ export function SiteFooter() {
         </div>
         <div className="pt-7 text-xs text-primary-foreground/55">
           © {new Date().getFullYear()} Tekma Global Partners Limited. All Rights Reserved.
+          <p className="mt-2">
+            Designed by{" "}
+            <a
+              href="https://codecampus.com.ng/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-primary-foreground/75 transition-colors hover:text-primary-foreground"
+            >
+              Code Campus
+            </a>
+          </p>
         </div>
       </div>
     </footer>
