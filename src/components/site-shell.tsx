@@ -28,7 +28,7 @@ export function SiteHeader() {
             alt="TEKMA Global Partners Limited"
             width={72}
             height={69}
-            className="h-12 w-auto shrink-0 object-contain max-[390px]:h-10 max-[350px]:h-9 lg:h-14"
+            className="h-14 w-auto shrink-0 object-contain max-[390px]:h-12 max-[350px]:h-10 lg:h-18"
           />
           <span className="whitespace-nowrap text-base font-extrabold leading-none tracking-[0.04em] text-navy max-[390px]:text-[13px] max-[390px]:tracking-[0.02em] max-[350px]:text-[11px] max-[350px]:tracking-[0.01em] sm:text-xl xl:text-2xl">
             TEKMA GLOBAL PARTNERS
@@ -36,27 +36,28 @@ export function SiteHeader() {
         </Link>
         <nav
           aria-label="Primary navigation"
-          className="ml-auto hidden items-center justify-center gap-5 lg:flex"
+          className="ml-auto hidden h-full min-h-0 items-center justify-center gap-3 pl-8 lg:flex"
         >
           <Link
             to="/"
             activeOptions={{ exact: true }}
-            className="text-sm font-semibold text-foreground/75 transition-colors hover:text-petroleum data-[status=active]:text-petroleum"
+            className="text-base font-semibold text-foreground/75 transition-colors hover:text-petroleum data-[status=active]:text-petroleum"
           >
-            Home
+            <span className="inline-block origin-center scale-y-110">Home</span>
           </Link>
           <Link
             to="/about"
-            className="text-sm font-semibold text-foreground/75 transition-colors hover:text-petroleum data-[status=active]:text-petroleum"
+            className="text-base font-semibold text-foreground/75 transition-colors hover:text-petroleum data-[status=active]:text-petroleum"
           >
-            About
+            <span className="inline-block origin-center scale-y-110">About</span>
           </Link>
-          <div className="group relative py-7">
+          <div className="group relative flex h-full items-center">
             <button
-              className="flex min-h-11 items-center gap-1 text-sm font-semibold text-foreground/75 transition-colors hover:text-petroleum"
+              className="flex min-h-11 items-center gap-1 text-base font-semibold text-foreground/75 transition-colors hover:text-petroleum"
               aria-haspopup="true"
             >
-              Services <ChevronDown className="size-4" />
+              <span className="inline-block origin-center scale-y-110">Services</span>
+              <ChevronDown className="size-4" />
             </button>
             <div className="invisible absolute left-1/2 top-full w-[560px] -translate-x-1/2 border-t-2 border-gold bg-background p-5 opacity-0 shadow-2xl transition-all group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
               <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-petroleum">
@@ -77,21 +78,21 @@ export function SiteHeader() {
           </div>
           <Link
             to="/opportunities"
-            className="text-sm font-semibold text-foreground/75 transition-colors hover:text-petroleum data-[status=active]:text-petroleum"
+            className="text-base font-semibold text-foreground/75 transition-colors hover:text-petroleum data-[status=active]:text-petroleum"
           >
-            Opportunities
+            <span className="inline-block origin-center scale-y-110">Opportunities</span>
           </Link>
           <Link
             to="/leadership"
-            className="text-sm font-semibold text-foreground/75 transition-colors hover:text-petroleum data-[status=active]:text-petroleum"
+            className="text-base font-semibold text-foreground/75 transition-colors hover:text-petroleum data-[status=active]:text-petroleum"
           >
-            Leadership
+            <span className="inline-block origin-center scale-y-110">Leadership</span>
           </Link>
           <Link
             to="/contact"
-            className="text-sm font-semibold text-foreground/75 transition-colors hover:text-petroleum data-[status=active]:text-petroleum"
+            className="text-base font-semibold text-foreground/75 transition-colors hover:text-petroleum data-[status=active]:text-petroleum"
           >
-            Contact
+            <span className="inline-block origin-center scale-y-110">Contact</span>
           </Link>
         </nav>
         <Button
@@ -174,13 +175,18 @@ export function SiteFooter() {
       <div className="mx-auto max-w-7xl px-5 py-16 lg:px-8">
         <div className="grid gap-12 border-b border-primary-foreground/15 pb-12 md:grid-cols-[1.3fr_1fr_1fr]">
           <div>
-            <img
-              src={logo}
-              alt="TEKMA Global Partners Limited"
-              className="h-24 w-auto"
-              width={100}
-              height={96}
-            />
+            <div className="flex flex-wrap items-center gap-3">
+              <img
+                src={logo}
+                alt="TEKMA Global Partners Limited"
+                className="h-24 w-auto shrink-0"
+                width={100}
+                height={96}
+              />
+              <span className="text-base font-extrabold leading-tight tracking-[0.04em] text-white sm:text-lg">
+                TEKMA GLOBAL PARTNERS
+              </span>
+            </div>
             <p className="mt-5 max-w-sm text-sm leading-7 text-primary-foreground/70">
               Global brokerage and consultancy across energy, assets, maritime and commercial real
               estate.
@@ -227,7 +233,7 @@ export function SiteFooter() {
             </a>
           </div>
         </div>
-        <div className="pt-7 text-xs text-primary-foreground/55">
+        <div className="pt-7 text-center text-xs text-primary-foreground/55">
           © {new Date().getFullYear()} Tekma Global Partners Limited. All Rights Reserved.
           <p className="mt-2">
             Designed by{" "}
